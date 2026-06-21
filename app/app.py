@@ -7,6 +7,10 @@ app = Flask(__name__)
 tasks = {}
 task_id_counter = 1
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"message": "Welcome to the CI/CD Task API!"}), 200
+
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "healthy", "version": "1.0.0"}), 200

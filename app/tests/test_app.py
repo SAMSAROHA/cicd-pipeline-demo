@@ -16,6 +16,11 @@ def run_around_tests():
     yield
     # Teardown
 
+def test_index(client):
+    response = client.get('/')
+    assert response.status_code == 200
+    assert response.get_json() == {"message": "Welcome to the CI/CD Task API!"}
+
 def test_health_check(client):
     response = client.get('/health')
     assert response.status_code == 200
